@@ -56,7 +56,7 @@ export default function Users() {
     e.preventDefault();
     setError("");
 
-    if (!name.trim() && !email.trim() && !password.trim()) {
+    if (!name.trim() || !email.trim() || !password.trim()) {
       setError("Veuillez remplir tous les champs");
       return;
     }
@@ -89,6 +89,7 @@ export default function Users() {
       setError("Impossible de joindre le serveur.");
     }
   };
+
   const handleDeleteUser = async (id: number) => {
     try {
       const res = await fetch(`${API_URL}/users/${id}`, {
